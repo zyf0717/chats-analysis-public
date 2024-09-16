@@ -2,19 +2,16 @@ import numpy as np
 import pandas as pd
 import re
 import json
-import emoji
 import plotly.express as px
 import plotly.graph_objs as go
 
 from collections import Counter
-from datetime import datetime, timedelta
 from statistics import mean, median, stdev
 from shiny import App, Inputs, Outputs, Session, reactive, render, ui
 from shiny.types import FileInfo
 from shinywidgets import output_widget, render_widget
 
 from icons import gear_fill, question_circle_fill
-
 
 days_of_week = np.array(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
 hhmm_range = pd.date_range('00:00', '23:59', freq='15min').time
