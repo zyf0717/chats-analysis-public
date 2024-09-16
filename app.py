@@ -875,14 +875,14 @@ def server(input: Inputs, output: Outputs, session: Session):
             )
 
         elif input.convo_metric() == "Message count":
-            df_grouped = df.groupby(by='Convo_ID')['Date'].count().reset_index()
+            df_grouped = df.groupby(by='Convo_ID')['Message'].count().reset_index()
 
             total_messages = df.shape[0]
-            mean_messages = round(df_grouped['Date'].mean(), 2)
-            median_messages = df_grouped['Date'].median()
-            min_messages = df_grouped['Date'].min()
-            max_messages = df_grouped['Date'].max()
-            sd_messages = round(df_grouped['Date'].std(), 2)
+            mean_messages = round(df_grouped['Message'].mean(), 2)
+            median_messages = df_grouped['Message'].median()
+            min_messages = df_grouped['Message'].min()
+            max_messages = df_grouped['Message'].max()
+            sd_messages = round(df_grouped['Message'].std(), 2)
 
             convo_stats = [[  # Note: list of list(s) (i.e. row(s)) for dataframe
                 num_convos,
@@ -969,8 +969,8 @@ def server(input: Inputs, output: Outputs, session: Session):
                 xaxis=dict(range=[0, np.percentile(df_duration['Duration'], 95)]),
             )
         elif input.convo_metric() == "Message count":
-            df_grouped = df.groupby(by='Convo_ID')['Date'].count().reset_index()
-            figure = px.histogram(df_grouped, x='Date',
+            df_grouped = df.groupby(by='Convo_ID')['Message'].count().reset_index()
+            figure = px.histogram(df_grouped, x='Message',
                 template=input.plot_theme())
             figure.update_layout(
                 xaxis_title="Number of messages",
