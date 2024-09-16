@@ -1,0 +1,13 @@
+name: chats-analysis-public
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - emoji
+  - python=3.12
+  - plotly
+  - shiny
+  - pandas
+  - jupyterlab
+  - shinywidgets
+  - statsmodels
