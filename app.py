@@ -306,11 +306,6 @@ def add_convo_id(df: pd.DataFrame, minutes: int = 10) -> pd.DataFrame:
 
     df['Convo_ID'] = id_list
 
-    # # To-do: figure out why the following code doesn't work like the above
-    # mask = df['Time_Delta'] > cutoff_td
-    # shifted_mask = mask.shift(fill_value=False)
-    # df['Convo_ID'] = shifted_mask.cumsum()
-
     # Get the conversational rows where the number of unique users is greater than 1
     df_convo = df[df.Convo_ID != 0]
     df_convo = df_convo[df_convo.groupby('Convo_ID')['User'].transform('nunique') > 1]
@@ -612,7 +607,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                     ui.input_select(
                         id="plot3_metric2", 
                         label=None, 
-                        choices=["Mean", "Median"],  # To-do: Max? What is max? Max inactivity?
+                        choices=["Mean", "Median"],
                         selected="Mean"
                     ),
                     col_widths=[4, 4,]
@@ -627,11 +622,8 @@ def server(input: Inputs, output: Outputs, session: Session):
             ),
             col_widths=[4, 4, 4, 6, 6, 6, 6]
         )
+
     
-
-# To-do: media/images sent(?), reactions(?), message replies(?)
-
-
     @render.data_frame
     @reactive.event(input.generate)
     def userStats():
