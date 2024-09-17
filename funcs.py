@@ -326,8 +326,14 @@ def parse_data(file_path: str, filename: str) -> pd.DataFrame:
         else:
             print("Error: Empty JSON file.")
 
-    # Partially anonymize users using initials.  # To-do: handle clashing initials
+    # Partially anonymize users using initials.
     df['User'] = df.User.apply(lambda x: ''.join([name[0].upper() for name in x.split()]))
+
+    # Calculate the size of each group
+    group_sizes = df.groupby('User')['User'].transform('size')
+
+    # Filter the DataFrame based on group sizes
+    df = df[group_sizes > 1].reset_index(drop=True)
 
     return df
 
