@@ -743,13 +743,10 @@ def server(input: Inputs, output: Outputs, session: Session):
 
             response_stats.append([
                 user,
-                # convos_started,
                 timedelta_to_str(rt_max_gap),
                 timedelta_to_str(rt_mean),
                 timedelta_to_str(rt_median),
                 timedelta_to_str(rt_sd),
-                # timedelta_to_str(rt_min),
-                # timedelta_to_str(rt_max),
             ])
 
             response_stats_df = pd.DataFrame(
@@ -760,8 +757,6 @@ def server(input: Inputs, output: Outputs, session: Session):
                     'Mean responsiveness', 
                     'Median responsiveness', 
                     'Standard deviation',
-                    # 'Quickest response',
-                    # 'Slowest response',
                 ]
             )
 
