@@ -13,5 +13,5 @@ Instructions:
 3. Create a Conda environment with `conda env -create -f depdendencies.yml`
    - For Ubuntu/Debian, can instead use `conda env -create -f environment.yml`
 4. Activate the environment with `conda activate chats-analysis-public`
-5. Run the app locally with `shiny run app.py` or `python app.py`
+5. Run the app locally with `shiny run app.py` or `python main.py`
 6. Depending on the terminal prompt from step 5, open either `127.0.0.1:8000` or `0.0.0.0:8000` in browser
